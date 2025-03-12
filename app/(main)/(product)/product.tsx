@@ -10,8 +10,7 @@ import { Card ,Chip,Text} from 'react-native-paper';
 
 export default function ProductScreen() {
   const navigation = useNavigation();
-
-
+  
   const {data,isPending,error,isError,refetch,isRefetching} = useQuery <any[]> ({  //API {data} 
     queryKey:['productData'], //ห้ามซ้ำตั้งชื่ออะไรก็ได้
     queryFn: async () => {

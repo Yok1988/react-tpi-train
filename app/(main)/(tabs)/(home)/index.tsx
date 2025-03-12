@@ -11,13 +11,15 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';  // See MaterialIc
 import { DrawerActions } from '@react-navigation/native';
 import HomeLogo from '@/components/HomeLogo';
 import { Button } from 'react-native-paper';
+import { AuthStoreContext } from '@/contexts/AuthContext';
+import { useContext } from 'react'
 
 //npx expo start -c (คำสั่ง ClearCash)
 //npx expo run:android
 
 export default function HomeScreen() {
-   const navigation = useNavigation();
-  
+  const navigation = useNavigation();
+  const {profile} = useContext(AuthStoreContext);  
     useEffect( () => { //ตกแต่งใช้ UseEffect()
       navigation.setOptions({
         //title:"Home",
@@ -55,6 +57,12 @@ export default function HomeScreen() {
       <View>     
           <Link href="/about">About Us</Link>    
       </View>
+
+      {
+        profile && <Text style={{fontSize:16 ,color:"green"}}>
+          ID User : {profile.id}   Name:{profile.name}  Role:{profile.role}
+        </Text>
+      }   
 
       {/* Pressable */}
       <View>       
